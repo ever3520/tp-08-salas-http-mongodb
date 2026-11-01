@@ -1,0 +1,39 @@
+<header class="cabecera-pagina">
+    <div>
+        <p class="etiqueta"><%= seccion %></p>
+        <h1>
+            <%= titulo %>
+        </h1>
+    </div>
+    <a class="boton" href="/reservas/nueva">Agregar sala</a>
+</header>
+<% if (salasDeEstudio.length===0) { %>
+    <p>No hay mascotas para mostrar.</p>
+    <% } else { %>
+        <section class="grilla" aria-label="Salas disponibles">
+            <% salasDeEstudio.forEach((sala)=> { %>
+                <article class="tarjeta">
+                    <p class="etiqueta">
+                        <%= sala.fecha %>
+                    </p>
+                    <h2>
+                        <%= sala.estudiante %>
+                    </h2>
+                    <p class="email">
+                        <%= sala.email %>
+                        
+                    </p>
+                    <p>
+                        <%= sala.sala %>
+                    </p>
+                    <p>
+                        <%= sala.turno %>
+                    </p>
+                    <p>
+                        <%= sala.personas %>
+                    </p>
+                    <a href="/reservas/<%= sala.id %>">Ver detalle</a>
+                </article>
+                <% }) %>
+        </section>
+        <% } %>
